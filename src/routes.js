@@ -1,32 +1,14 @@
-const express = require('express');
-const routes = express.Router();
+const { Router } = require('express');
+const TarefasController = require('./apps/controllers/TarefasController.js')
 
-let tarefas = [];
-let currentId = 1;
+const tarefasRoutes = new Router();
 
-// Listar Tarefas
-routes.get('/tarefas', (req, res) => {
-    res.json(tarefas);
-});
+tarefasRoutes.get('/',                   TarefasController.list);
+// tarefasRoutes.get('/cadastrar',       TarefasController.cadastrar);
+// tarefasRoutes.post('/salvar',         TarefasController.salvar);
+// tarefasRoutes.get('/editar/:id',      TarefasController.editar);
+// tarefasRoutes.post('/editar/:id',     TarefasController.salvarEditar);
+// tarefasRoutes.delete('/deletar/:id',  TarefasController.deletar);
+// tarefasRoutes.put('/desabilitar/:id', TarefasController.desabilitar);
 
-// Criar Tarefa
-routes.post('/criar', (req, res) => {
-    const { titulo, descricao, status } = req.body;
-
-    if (!titulo || !descricao) {
-        return res.status(400).json({ error: 'Título e descrição são obrigatórios.' });
-    }
-
-    const novaTarefa = {
-        id: currentId++,
-        titulo,
-        descricao,
-        status: status || 'pendente',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    };
-    tarefas.push(novaTarefa);
-    res.status(201).json(novaTarefa);
-});
-
-module.exports = routes;
+module.exports = tarefasRoutes; // Exportando o Router
