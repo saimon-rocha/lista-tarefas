@@ -5,7 +5,7 @@ const tarefasRoutes = new Router();
 
 tarefasRoutes.get('/',          TarefasController.list);
 tarefasRoutes.get('/cadastrar', TarefasController.cadastrar);
-// tarefasRoutes.post('/salvar',         TarefasController.salvar);
+tarefasRoutes.post('/salvar',   TarefasController.salvar);
 // tarefasRoutes.get('/editar/:id',      TarefasController.editar);
 // tarefasRoutes.post('/editar/:id',     TarefasController.salvarEditar);
 // tarefasRoutes.delete('/deletar/:id',  TarefasController.deletar);

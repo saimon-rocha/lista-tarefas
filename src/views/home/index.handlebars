@@ -1,1 +1,8 @@
-<h1>Hello World</h1>
+<h1>Lista de Tarefas</h1>
+<ul>
+    {{#each tarefas}}
+    <li><strong>{{titulo}}</strong>: {{descricao}}</li>
+    {{else}}
+    <li>Não há tarefas cadastradas.</li>
+    {{/each}}
+</ul>

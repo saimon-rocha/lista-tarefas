@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = require('./routes'); // Importa as rotas definidas
-const { engine } = require('express-handlebars');  // Usando a forma correta de importar
+const { engine } = require('express-handlebars');  
 const path = require('path');
 
 const app = express();
@@ -8,8 +8,11 @@ const app = express();
 // Middleware para processar JSON
 app.use(express.json());
 
+// 🔥 Adicione este middleware para processar dados do formulário (importante para req.body funcionar!)
+app.use(express.urlencoded({ extended: true }));
+
 // Usando as rotas
-app.use('/', routes); // Define o prefixo para as rotas
+app.use('/', routes);
 
 // Configuração do template engine Handlebars com helper de JSON
 app.engine('handlebars', engine({
