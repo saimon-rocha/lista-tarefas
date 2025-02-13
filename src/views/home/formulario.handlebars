@@ -1,17 +1,23 @@
 <h3 style="text-align: center;">Cadastrar Novas Tarefa</h3>
 
-<form action="/salvar" method="POST">
-    <div class="mb-3">
-        <label for="titulo" class="form-label">Título</label>
-        <input type="text" class="form-control" id="titulo" name="titulo" required>
+<form class="container mt-5" action="/salvar" method="POST">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+            </div>
+            <div class="mb-3">
+                <label for="data" class="form-label">Prazo</label>
+                <input type="date" class="form-control" id="data" name="data" required>
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="descricao" class="form-label">Descrição</label>
-        <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="data" class="form-label">Prazo</label>
-        <input type="date" class="form-control" id="data" name="data" rows="3" required></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-<div class="mb-3">
+</form>
