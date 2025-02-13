@@ -38,22 +38,6 @@
 
   {{{body}}}
 
-<!-- Modal Bootstrap -->
-<div class="modal fade bd-example-modal-lg" id="customModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="modalMessage"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
   <!-- Carregue o Bootstrap JavaScript Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -62,13 +46,17 @@
 <style>
   .flash-message {
     position: fixed;
-    top: 20px;
+    top: 50px; /* Ajuste para centralizar mais no topo */
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    width: 50%;
+    width: 40%; /* Reduzido para centralizar melhor */
+    max-width: 500px; /* Evita que fique muito largo em telas grandes */
     text-align: center;
     font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 </style>
 

@@ -58,7 +58,7 @@ class TarefasController {
         tarefa.situacao = 'concluida';
         this.salvarTarefas(tarefas);
         
-        req.flash('successMessage', 'Tarefa concluída com sucesso!');
+        req.flash('successMessage', 'Tarefa Concluída com sucesso!');
         return res.redirect('/');
     }
     
