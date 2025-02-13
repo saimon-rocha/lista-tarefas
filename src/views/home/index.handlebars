@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Lista de Tarefas</h1>
+<h3 style="text-align: center;">Lista de Tarefas</h3>
 
 <div class="container mt-4">
     <div class="row mb-2">
@@ -7,6 +7,9 @@
         </div>
         <div class="col-sm">
             <strong>Descrição</strong>
+        </div>
+         <div class="col-sm">
+            <strong>Prazo</strong>
         </div>
         <div class="col-sm">
             <strong>Ações</strong>
@@ -20,6 +23,9 @@
                 </div>
                 <div class="col-sm">
                     {{descricao}}
+                </div>
+                <div class="col-sm">
+                    {{prazo}}
                 </div>
                 <div class="col-sm">
                     <form action="/concluir/{{id}}" method="POST" style="display:inline;">

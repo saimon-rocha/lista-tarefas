@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <div class="row mb-2">
+        <div class="col-sm">
+            <strong>Titulo</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Descrição</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Prazo</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Data Conclusão</strong>
+        </div>
+    </div>
+    {{#each tarefas}}
+    {{#ifEquals situacao 'concluida'}}
+    <div class="row mb-2 align-items-center">
+        <div class="col-sm">
+            {{titulo}}
+        </div>
+        <div class="col-sm">
+            {{descricao}}
+        </div>
+        <div class="col-sm">
+            {{prazo}}
+        </div>
+        <div class="col-sm">
+            {{dt_conclusao}}
+        </div>
+    </div>
+    {{/ifEquals}}
+    {{/each}}
+</div>

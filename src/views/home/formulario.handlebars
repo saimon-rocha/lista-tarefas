@@ -1,4 +1,4 @@
-<h1>Cadastrar Nova Tarefa</h1>
+<h3 style="text-align: center;">Cadastrar Novas Tarefa</h3>
 
 <form action="/salvar" method="POST">
     <div class="mb-3">
@@ -8,6 +8,10 @@
     <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
         <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="data" class="form-label">Prazo</label>
+        <input type="date" class="form-control" id="data" name="data" rows="3" required></input>
     </div>
     <button type="submit" class="btn btn-primary">Cadastrar</button>
 <div class="mb-3">
