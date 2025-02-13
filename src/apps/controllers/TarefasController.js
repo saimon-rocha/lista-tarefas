@@ -5,18 +5,19 @@ const FILE_PATH = path.join(__dirname, 'tarefas.json');
 
 class TarefasController {
     constructor() {
-        this.list = this.list.bind(this);
+        this.list      = this.list.bind(this);
         this.cadastrar = this.cadastrar.bind(this);
-        this.salvar = this.salvar.bind(this);
-        this.concluir = this.concluir.bind(this);
+        this.salvar    = this.salvar.bind(this);
+        this.concluir  = this.concluir.bind(this);
+        this.deletar   = this.deletar.bind(this);
     }
 
     async list(req, res) {
         const tarefas = this.lerTarefas();
-        const tarefasConcluidas = tarefas.filter(tarefa => tarefa.situacao === 'concluida'); // Filtra apenas as concluídas
+        const tarefasConcluidas = tarefas.filter(tarefa => tarefa.situacao === 'pendente'); // Filtra apenas as pendentes
         res.render('home/index', { tarefas: tarefasConcluidas });
     }
-    
+
 
     async cadastrar(req, res) {
         res.render('home/formulario');
@@ -55,6 +56,20 @@ class TarefasController {
 
         tarefa.situacao = 'concluida';
         this.salvarTarefas(tarefas);
+        res.redirect('/');
+    }
+
+    async deletar(req, res) {
+        const { id } = req.params;
+        const tarefas = this.lerTarefas();
+
+        // Filtra as tarefas para remover a tarefa com o id correspondente
+        const novasTarefas = tarefas.filter(tarefa => tarefa.id !== Number(id));
+
+        // Salva as tarefas atualizadas no arquivo JSON
+        this.salvarTarefas(novasTarefas);
+
+        // Redireciona de volta para a página principal
         res.redirect('/');
     }
 
