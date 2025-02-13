@@ -1,8 +1,28 @@
 <h1>Lista de Tarefas</h1>
-<ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <strong>Titulo</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Descrição</strong>
+        </div>
+        <div class="col-sm">
+            <strong>Ações</strong>
+        </div>
+    </div>
     {{#each tarefas}}
-    <li><strong>{{titulo}}</strong>: {{descricao}}</li>
-    {{else}}
-    <li>Não há tarefas cadastradas.</li>
+    <div class="row">
+        <div class="col-sm">
+            {{titulo}}
+        </div>
+        <div class="col-sm">
+            {{descricao}}
+        </div>
+        <div class="col-sm">
+            editar excluir
+        </div>
+    </div>
     {{/each}}
-</ul>
+</div>
