@@ -5,11 +5,11 @@ const FILE_PATH = path.join(__dirname, 'tarefas.json');
 
 class TarefasController {
     constructor() {
-        this.list      = this.list.bind(this);
+        this.list = this.list.bind(this);
         this.cadastrar = this.cadastrar.bind(this);
-        this.salvar    = this.salvar.bind(this);
-        this.concluir  = this.concluir.bind(this);
-        this.deletar   = this.deletar.bind(this);
+        this.salvar = this.salvar.bind(this);
+        this.concluir = this.concluir.bind(this);
+        this.deletar = this.deletar.bind(this);
     }
 
     async list(req, res) {
@@ -49,29 +49,38 @@ class TarefasController {
         const { id } = req.params;
         const tarefas = this.lerTarefas();
         const tarefa = tarefas.find(tarefa => tarefa.id === Number(id));
-
+    
         if (!tarefa) {
-            return res.status(404).send('Tarefa não encontrada!');
+            req.flash('errorMessage', 'Tarefa não encontrada!');
+            return res.redirect('/'); 
         }
-
+    
         tarefa.situacao = 'concluida';
         this.salvarTarefas(tarefas);
-        res.redirect('/');
+        
+        req.flash('successMessage', 'Tarefa concluída com sucesso!');
+        return res.redirect('/');
     }
+    
+
 
     async deletar(req, res) {
         const { id } = req.params;
         const tarefas = this.lerTarefas();
+        const tarefa = tarefas.find(tarefa => tarefa.id === Number(id));
 
-        // Filtra as tarefas para remover a tarefa com o id correspondente
+        if (!tarefa) {
+            req.flash('errorMessage', "Tarefa não encontrada!");  // Adiciona a mensagem de erro
+            return res.redirect('/');  // Redireciona após a adição da mensagem de erro
+        }
+
         const novasTarefas = tarefas.filter(tarefa => tarefa.id !== Number(id));
-
-        // Salva as tarefas atualizadas no arquivo JSON
         this.salvarTarefas(novasTarefas);
 
-        // Redireciona de volta para a página principal
-        res.redirect('/');
+        req.flash('successMessage', "Tarefa deletada com sucesso!");  // Adiciona a mensagem de sucesso
+        return res.redirect('/');  // Redireciona após a operação e a adição da mensagem de sucesso
     }
+
 
     lerTarefas() {
         try {
