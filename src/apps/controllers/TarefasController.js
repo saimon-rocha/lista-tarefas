@@ -20,10 +20,9 @@ class TarefasController {
     }
 
     async salvar(req, res) {
-        const titulo = req.body.titulo;
-        const descricao = req.body.descricao;
+        const { titulo, descricao } = req.body;
         const novasTarefas = this.lerTarefas();
-        
+
         // Verifica se os campos estão vazios
         if (!titulo || !descricao) {
             return res.status(400).render('home/formulario', {
@@ -33,7 +32,10 @@ class TarefasController {
             });
         }
 
-        novasTarefas.push({ titulo, descricao });
+        // Calcula o próximo ID
+        const novoId = novasTarefas.length > 0 ? novasTarefas[novasTarefas.length - 1].id + 1 : 1;
+
+        novasTarefas.push({ id: novoId, titulo, descricao });
         this.salvarTarefas(novasTarefas);
         res.redirect('/');
     }
