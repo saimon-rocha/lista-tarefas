@@ -21,6 +21,7 @@ class TarefasController {
 
     async salvar(req, res) {
         const { titulo, descricao } = req.body;
+        const situacao = 'pendente';
         const novasTarefas = this.lerTarefas();
 
         // Verifica se os campos estão vazios
@@ -35,7 +36,7 @@ class TarefasController {
         // Calcula o próximo ID
         const novoId = novasTarefas.length > 0 ? novasTarefas[novasTarefas.length - 1].id + 1 : 1;
 
-        novasTarefas.push({ id: novoId, titulo, descricao });
+        novasTarefas.push({ id: novoId, titulo, descricao, situacao});
         this.salvarTarefas(novasTarefas);
         res.redirect('/');
     }
