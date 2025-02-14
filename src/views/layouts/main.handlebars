@@ -2,85 +2,64 @@
 <html lang="pt-br">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  {{!-- FONT --}}
-  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/{{style}}">
-  {{!-- JS --}}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cadastrar">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/concluidas">Concluidos</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastrar">Cadastrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/concluidas">Concluídas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-  {{{body}}}
+    {{{body}}}
 
-  <!-- Carregue o Bootstrap JavaScript Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    {{#if successMessage}}
+    <div class="alert alert-success flash-message">{{successMessage}}</div>
+    {{/if}}
 
-<style>
-  .flash-message {
-    position: fixed;
-    top: 50px; /* Ajuste para centralizar mais no topo */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 40%; /* Reduzido para centralizar melhor */
-    max-width: 500px; /* Evita que fique muito largo em telas grandes */
-    text-align: center;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-</style>
+    {{#if errorMessage}}
+    <div class="alert alert-danger flash-message">{{errorMessage}}</div>
+    {{/if}}
 
-{{#if successMessage}}
-  <div class="alert alert-success flash-message">{{successMessage}}</div>
-{{/if}}
+    <script>
+        setTimeout(() => {
+            document.querySelectorAll('.flash-message').forEach(msg => {
+                msg.style.opacity = '0';
+                msg.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => msg.remove(), 500); // Remove o elemento após o fade-out
+            });
+        }, 4000);
+    </script>
 
-{{#if errorMessage}}
-  <div class="alert alert-danger flash-message">{{errorMessage}}</div>
-{{/if}}
-
-<script>
-  setTimeout(() => {
-    document.querySelectorAll('.flash-message').forEach(msg => {
-      msg.style.opacity = '0';
-      msg.style.transition = 'opacity 0.5s ease-out';
-      setTimeout(() => msg.remove(), 500); // Remove o elemento após o fade-out
-    });
-  }, 4000);
-</script>
-
-
+    <!-- Carregue o Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

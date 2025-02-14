@@ -22,6 +22,7 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '/views'));
 
+
 // Configuração da sessão (deve vir antes do flash)
 app.use(session({
     secret: '123444',
@@ -33,9 +34,9 @@ app.use(session({
 app.use(flash());
 
 app.use((req, res, next) => {
-  res.locals.successMessage = req.flash('successMessage');
-  res.locals.errorMessage = req.flash('errorMessage');
-  next();
+    res.locals.successMessage = req.flash('successMessage');
+    res.locals.errorMessage = req.flash('errorMessage');
+    next();
 });
 
 
@@ -43,6 +44,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware para servir arquivos estáticos (CSS, JS, imagens, etc.)
+app.use(express.static(path.join(__dirname, '/public/')));
 
 app.use(routes);
 

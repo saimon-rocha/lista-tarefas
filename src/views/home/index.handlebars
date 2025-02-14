@@ -1,43 +1,43 @@
 <h3 style="text-align: center;">Lista de Tarefas</h3>
 
 <div class="container mt-4">
-    <div class="row mb-2">
-        <div class="col-sm">
-            <strong>Titulo</strong>
+    <div class="row mb-2 text-center">
+        <div class="col-3 col-md-3">
+            <strong>Título</strong>
         </div>
-        <div class="col-sm">
+        <div class="col-3 col-md-3">
             <strong>Descrição</strong>
         </div>
-         <div class="col-sm">
+        <div class="col-3 col-md-2">
             <strong>Prazo</strong>
         </div>
-        <div class="col-sm">
+        <div class="col-3 col-md-4">
             <strong>Ações</strong>
         </div>
     </div>
     {{#each tarefas}}
         {{#ifEquals situacao 'pendente'}}
-            <div class="row mb-2 align-items-center">
-                <div class="col-sm">
+            <div class="row mb-2 align-items-center text-center">
+                <div class="col-3 col-md-3">
                     {{titulo}}
                 </div>
-                <div class="col-sm">
+                <div class="col-3 col-md-3">
                     {{descricao}}
                 </div>
-                <div class="col-sm">
+                <div class="col-3 col-md-2">
                     {{prazo}}
                 </div>
-                <div class="col-sm">
+                <div class="col-3 col-md-4">
                     <form action="/concluir/{{id}}" method="POST" style="display:inline;">
-                        <button type="submit"  class="btn btn-success me-2" data-bs-toggle="tooltip" title="Concluir"><i class="bi bi-check-lg"></i></button>
+                        <button type="submit" class="btn btn-success me-2" data-bs-toggle="tooltip" title="Concluir"><i class="bi bi-check-lg"></i></button>
                     </form>
 
                     <form action="/editar/{{id}}" method="POST" style="display:inline;">
-                        <button type="submit"  class="btn btn-primary me-2" data-bs-toggle="tooltip" title="editar"><i class="bi bi-pencil"></i></button>
+                        <button type="submit" class="btn btn-primary me-2" data-bs-toggle="tooltip" title="Editar"><i class="bi bi-pencil"></i></button>
                     </form>
 
                     <form action="/deletar/{{id}}" method="POST" style="display:inline;">
-                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="excluir"><i class="bi bi-trash"></i></button>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="Excluir"><i class="bi bi-trash"></i></button>
                     </form>
                 </div>
             </div>

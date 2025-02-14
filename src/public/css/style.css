@@ -1,0 +1,87 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  font-size: 1rem; /* 1rem é igual ao tamanho da fonte raiz */
+  padding: 1em; /* 1em é igual ao tamanho da fonte do elemento pai */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.flash-message {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 80%; /* Reduzido para se ajustar em telas pequenas */
+  max-width: 500px;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-out;
+}
+
+/* Estilos para telas pequenas (celulares) */
+@media (max-width: 576px) {
+  .flash-message {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+}
+
+/* Estilos para telas médias (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .flash-message {
+    width: 80%;
+    font-size: 15px;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* Estilos para telas grandes (desktops) */
+@media (min-width: 769px) {
+  .flash-message {
+    width: 60%;
+    font-size: 16px;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

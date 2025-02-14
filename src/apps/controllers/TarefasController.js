@@ -17,9 +17,10 @@ class TarefasController {
 
     async list(req, res) {
         const tarefas = this.lerTarefas();
-        const tarefasConcluidas = tarefas.filter(tarefa => tarefa.situacao === 'pendente'); // Filtra apenas as pendentes
-        res.render('home/index', { tarefas: tarefasConcluidas });
+        const tarefasConcluidas = tarefas.filter(tarefa => tarefa.situacao === 'pendente');
+        res.render('home/index', { tarefas: tarefasConcluidas});
     }
+
 
 
     async cadastrar(req, res) {
@@ -27,7 +28,7 @@ class TarefasController {
     }
 
     async salvar(req, res) {
-        const { titulo, descricao, prazo} = req.body;
+        const { titulo, descricao, prazo } = req.body;
         const situacao = 'pendente';
         const novasTarefas = this.lerTarefas();
 
@@ -55,20 +56,20 @@ class TarefasController {
         const dt_conclusao = moment().format('DD/MM/YYYY');
         const tarefas = this.lerTarefas();
         const tarefa = tarefas.find(tarefa => tarefa.id === Number(id));
-    
+
         if (!tarefa) {
             req.flash('errorMessage', 'Tarefa não encontrada!');
-            return res.redirect('/'); 
+            return res.redirect('/');
         }
-    
+
         tarefa.situacao = 'concluida';
         tarefa.dt_conclusao = dt_conclusao;
         this.salvarTarefas(tarefas);
-        
+
         req.flash('successMessage', 'Tarefa Concluída com sucesso!');
         return res.redirect('/');
     }
-    
+
     async deletar(req, res) {
         const { id } = req.params;
         const tarefas = this.lerTarefas();
